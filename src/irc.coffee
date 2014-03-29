@@ -212,7 +212,7 @@ class IrcBot extends Adapter
 
       if options.onlyUsers and from not in options.onlyUsers
         logger.info('User: %s is not in allowUsers list - Ignoring', from)
-        # we'll ignore this message if it's from someone we want to ignore
+        # we'll ignore this message if it's not from someone we on the defined whitelist
         return
 
       logger.info "NOTICE from #{from} to #{to}: #{message}"
@@ -232,7 +232,7 @@ class IrcBot extends Adapter
 
       if options.onlyUsers and from not in options.onlyUsers
         logger.info('User: %s is not in allowUsers list - Ignoring', from)
-        # we'll ignore this message if it's from someone we want to ignore
+        # we'll ignore this message if it's not from someone we on the defined whitelist
         return
 
       logger.debug "From #{from} to #{to}: #{message}"
@@ -257,7 +257,7 @@ class IrcBot extends Adapter
 
       if options.onlyUsers and from not in options.onlyUsers
         logger.info('User: %s is not in allowUsers list - Ignoring', from)
-        # we'll ignore this message if it's from someone we want to ignore
+        # we'll ignore this message if it's not from someone we on the defined whitelist
         return
 
       user = self.createUser to, from
@@ -284,7 +284,7 @@ class IrcBot extends Adapter
 
       if options.onlyUsers and from not in options.onlyUsers
         logger.info('User: %s is not in allowUsers list - Ignoring', from)
-        # we'll ignore this message if it's from someone we want to ignore
+        # we'll ignore this message if it's not from someone we on the defined whitelist
         return
 
       nameLength = options.nick.length
@@ -318,7 +318,7 @@ class IrcBot extends Adapter
 
       if options.onlyUsers and from not in options.onlyUsers
         logger.info('User: %s is not in allowUsers list - Ignoring', from)
-        # we'll ignore this message if it's from someone we want to ignore
+        # we'll ignore this message if it's not from someone we on the defined whitelist
         return
 
       if not process.env.HUBOT_IRC_PRIVATE or process.env.HUBOT_IRC_IGNOREINVITE
