@@ -175,7 +175,7 @@ class IrcBot extends Adapter
     user_id = {}
     
     if options.onlyUsers
-      logger.info('HUBOT_IRC_ONLY_USERS is set to %s', process.env.HUBOT_IRC_ONLY_USERS)
+      logger.info('HUBOT_IRC_ONLY_USERS is set to %s, all other users will be ignored', process.env.HUBOT_IRC_ONLY_USERS)
 
     if options.nickpass?
       identify_args = ""
