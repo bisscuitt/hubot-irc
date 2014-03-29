@@ -210,7 +210,7 @@ class IrcBot extends Adapter
         # we'll ignore this message if it's from someone we want to ignore
         return
 
-      if options.onlyUsers and from not in options.allowUsers
+      if options.onlyUsers and from not in options.onlyUsers
         logger.info('User: %s is not in allowUsers list - Ignoring', from)
         # we'll ignore this message if it's from someone we want to ignore
         return
@@ -230,7 +230,7 @@ class IrcBot extends Adapter
         # we'll ignore this message if it's from someone we want to ignore
         return
 
-      if options.onlyUsers and from not in options.allowUsers
+      if options.onlyUsers and from not in options.onlyUsers
         logger.info('User: %s is not in allowUsers list - Ignoring', from)
         # we'll ignore this message if it's from someone we want to ignore
         return
@@ -255,7 +255,7 @@ class IrcBot extends Adapter
         # we'll ignore this message if it's from someone we want to ignore
         return
 
-      if options.onlyUsers and from not in options.allowUsers
+      if options.onlyUsers and from not in options.onlyUsers
         logger.info('User: %s is not in allowUsers list - Ignoring', from)
         # we'll ignore this message if it's from someone we want to ignore
         return
@@ -282,7 +282,7 @@ class IrcBot extends Adapter
         # we'll ignore this message if it's from someone we want to ignore
         return
 
-      if options.onlyUsers and from not in options.allowUsers
+      if options.onlyUsers and from not in options.onlyUsers
         logger.info('User: %s is not in allowUsers list - Ignoring', from)
         # we'll ignore this message if it's from someone we want to ignore
         return
@@ -316,7 +316,7 @@ class IrcBot extends Adapter
         # we'll ignore this message if it's from someone we want to ignore
         return
 
-      if options.onlyUsers and from not in options.allowUsers
+      if options.onlyUsers and from not in options.onlyUsers
         logger.info('User: %s is not in allowUsers list - Ignoring', from)
         # we'll ignore this message if it's from someone we want to ignore
         return
