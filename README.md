@@ -43,6 +43,8 @@ And the following are optional.
 * `HUBOT_IRC_DEBUG`
 * `HUBOT_IRC_USESSL`
 * `HUBOT_IRC_PRIVATE`
+* `HUBOT_IRC_IGNORE_USERS`
+* `HUBOT_IRC_ONLY_USERS`
 
 ### IRC Server
 
@@ -107,6 +109,16 @@ SSL. You can set the variable to anything.
 
 This is the optional flag if your hubot should ignore `PRIVMSG` and `INVITE`
 commands. You can set the variable to anything.
+
+### IRC Ignore Users
+
+This is an optional comma separated list of irc users to ignore, defaults to empty
+
+### IRC Only Users
+
+This is an optional comma separated list of irc users which should be listened to
+only. If this is set all other users will be ignored
+
 
 ### Configuring the variables on Heroku
 
