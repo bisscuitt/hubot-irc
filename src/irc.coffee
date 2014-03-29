@@ -140,6 +140,7 @@ class IrcBot extends Adapter
       port:     process.env.HUBOT_IRC_PORT
       rooms:    process.env.HUBOT_IRC_ROOMS.split(",")
       ignoreUsers: process.env.HUBOT_IRC_IGNORE_USERS?.split(",") or []
+      onlyUsers:   process.env.HUBOT_IRC_ONLY_USERS?.split(",") or []
       server:   process.env.HUBOT_IRC_SERVER
       password: process.env.HUBOT_IRC_PASSWORD
       nickpass: process.env.HUBOT_IRC_NICKSERV_PASSWORD
@@ -172,6 +173,9 @@ class IrcBot extends Adapter
 
     next_id = 1
     user_id = {}
+    
+    if options.onlyUsers
+      logger.info('HUBOT_IRC_ONLY_USERS is set to %s', process.env.HUBOT_IRC_ONLY_USERS)
 
     if options.nickpass?
       identify_args = ""
@@ -206,6 +210,11 @@ class IrcBot extends Adapter
         # we'll ignore this message if it's from someone we want to ignore
         return
 
+      if options.onlyUsers and from not in options.onlyUsers
+        logger.info('User: %s is not in allowUsers list - Ignoring', from)
+        # we'll ignore this message if it's from someone we want to ignore
+        return
+
       logger.info "NOTICE from #{from} to #{to}: #{message}"
 
       user = self.createUser to, from
@@ -218,6 +227,11 @@ class IrcBot extends Adapter
 
       if from in options.ignoreUsers
         logger.info('Ignoring user: %s', from)
+        # we'll ignore this message if it's from someone we want to ignore
+        return
+
+      if options.onlyUsers and from not in options.onlyUsers
+        logger.info('User: %s is not in allowUsers list - Ignoring', from)
         # we'll ignore this message if it's from someone we want to ignore
         return
 
@@ -241,6 +255,11 @@ class IrcBot extends Adapter
         # we'll ignore this message if it's from someone we want to ignore
         return
 
+      if options.onlyUsers and from not in options.onlyUsers
+        logger.info('User: %s is not in allowUsers list - Ignoring', from)
+        # we'll ignore this message if it's from someone we want to ignore
+        return
+
       user = self.createUser to, from
       if user.room
         logger.debug "#{to} * #{from} #{message}"
@@ -260,6 +279,11 @@ class IrcBot extends Adapter
 
       if nick in options.ignoreUsers
         logger.info('Ignoring user: %s', nick)
+        # we'll ignore this message if it's from someone we want to ignore
+        return
+
+      if options.onlyUsers and from not in options.onlyUsers
+        logger.info('User: %s is not in allowUsers list - Ignoring', from)
         # we'll ignore this message if it's from someone we want to ignore
         return
 
@@ -291,7 +315,12 @@ class IrcBot extends Adapter
         logger.info('Ignoring user: %s', from)
         # we'll ignore this message if it's from someone we want to ignore
         return
-      
+
+      if options.onlyUsers and from not in options.onlyUsers
+        logger.info('User: %s is not in allowUsers list - Ignoring', from)
+        # we'll ignore this message if it's from someone we want to ignore
+        return
+
       if not process.env.HUBOT_IRC_PRIVATE or process.env.HUBOT_IRC_IGNOREINVITE
         bot.join channel
 
