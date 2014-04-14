@@ -256,6 +256,7 @@ class IrcBot extends Adapter
       logger.info('Got private message from %s: %s', nick, message)
 
       if process.env.HUBOT_IRC_PRIVATE
+        logger.info('Hubot is in Private mode. Ignoring PM from %s (%s)', nick, process.env.HUBOT_IRC_PRIVATE)
         return
 
       if nick in options.ignoreUsers
